@@ -1,0 +1,14 @@
+infer_embeddings: False
+data:
+  train_arguments_path: 'data/splits/arguments-training.tsv'
+  train_labels_path: 'data/splits/labels-training.tsv'
+  val_arguments_path: 'data/splits/arguments-val.tsv'
+  val_labels_path: 'data/splits/labels-val.tsv'
+  embeddings_folder: 'data/embeddings'
+model:
+  name: 'roberta-base'
+tokenizer:
+  name: 'roberta-base'
+  max_len: 128
+lightgbm:
+  objective: 'binary'

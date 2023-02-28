@@ -1,0 +1,68 @@
+train_dataset_path: data/splits/arguments-training.tsv
+train_labels_path: data/splits/labels-training.tsv
+val_dataset_path: data/submission-sets/arguments-validation.tsv # data/submission-sets/arguments-test.tsv
+val_labels_path: data/splits/labels-val.tsv
+ova: True
+label_index: 0  # single model per label training
+n_classes: 1 # 20
+lr: 0.00001 # This is the learning rate at the beginning of the training process
+batch_size: 16
+epochs: 100
+thresholds:
+  - 0.35
+  - 0.35
+max_len: 100
+dropout: 0.2
+seed: 13
+pooling: True
+clipping: True
+max_norm: 3.0
+normalization: False
+pretrained_model: bert-base-uncased
+model_folder: models/multilabel_train/bbu  # models/per_label_models # models/best_models_per_label
+model_name: 'multilabel_train/tapt_base/model_unified_relu_'
+pooling_operation: None # mean_max # attention
+beta1: 0.9
+beta2: 0.999
+weight_decay: 1e-3
+warmup_steps: 1
+tapt: True  # Use task-adapted lm
+early_stopping_patience: 20  # set to 0 to ignore early stopping callback
+tracking_uri: "SET_CUSTOM_TRACKING_URI"
+experiment_name: 'EXPERIMENT_NAME'
+run_name: 'EXPERIMENT_RUN_NAME'
+results_folder: 'results/validation' # 'results/test'  # 'results/validation'
+results_file_name: 'results.tsv'
+downsampling: True
+against_phrases:
+  - " so it is not valid to say that "
+  - " so it is wrong that "
+in_favor_phrases:
+  - " so "
+  - " thus "
+  - " therefore "
+  - ". Subsequently "
+  - ". As a result "
+  - ". So it is valid to say that "
+  - ", so it is true that "
+labels_column:
+  - "Self-direction: thought"
+  - "Self-direction: action"
+  - "Stimulation"
+  - "Hedonism"
+  - "Achievement"
+  - "Power: dominance"
+  - "Power: resources"
+  - "Face"
+  - "Security: personal"
+  - "Security: societal"
+  - "Tradition"
+  - "Conformity: rules"
+  - "Conformity: interpersonal"
+  - "Humility"
+  - "Benevolence: caring"
+  - "Benevolence: dependability"
+  - "Universalism: concern"
+  - "Universalism: nature"
+  - "Universalism: tolerance"
+  - "Universalism: objectivity"

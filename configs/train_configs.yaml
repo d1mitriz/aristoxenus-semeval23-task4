@@ -1,0 +1,44 @@
+train_dataset_path: data/arguments-training.tsv
+train_labels_path: data/labels-training.tsv
+val_dataset_path: data/arguments-val.tsv
+val_labels_path: data/labels-val.tsv
+ova: True
+label_index: 0  # single model per label training
+n_classes: 1 # 20
+lr: 0.00001 # This is the learning rate at the beginning of the training process
+batch_size: 192
+epochs: 100
+threshold: 0.35
+max_len: 100
+dropout: 0.2
+seed: 13
+downsampling: True
+pooling: True
+pooling_operation: None # attention # mean_max # attention
+clipping: True
+max_norm: 3.0
+normalization: False
+pretrained_model: models/TAPT/roberta-base/checkpoint-219
+model_folder: models
+model_name: 'multilabel_train/tapt_base/model_'
+beta1: 0.9
+beta2: 0.999
+weight_decay: 1e-3
+warmup_steps: 1
+tapt: True
+early_stopping_patience: 20  # set to 0 to ignore early stopping callback
+tracking_uri: "SET_CUSTOM_TRACKING_URI"
+experiment_name: "EXPERIMENT_NAME"
+run_name: 'EXPERIMENT_RUN_NAME'
+results_file: 'results/results.txt'
+against_phrases:
+  - " so it is not valid to say that "
+  - " so it is wrong that "
+in_favor_phrases:
+  - " so "
+  - " thus "
+  - " therefore "
+  - ". Subsequently "
+  - ". As a result "
+  - ". So it is valid to say that "
+  - ", so it is true that "
